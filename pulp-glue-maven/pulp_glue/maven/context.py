@@ -3,7 +3,7 @@ from gettext import gettext as _
 from pulp_glue.common.context import EntityDefinition  # noqa: F401
 from pulp_glue.common.context import (
     PulpContentContext,
-    PulpEntityContext,
+    PulpDistributionContext,
     PulpRemoteContext,
     PulpRepositoryContext,
     PulpRepositoryVersionContext,
@@ -20,7 +20,7 @@ class PulpMavenArtifactContentContext(PulpContentContext):
     READ_ID = "content_maven_artifact_read"
 
 
-class PulpMavenDistributionContext(PulpEntityContext):
+class PulpMavenDistributionContext(PulpDistributionContext):
     ENTITY = _("maven distribution")
     ENTITIES = _("maven distributions")
     HREF = "maven_maven_distribution_href"
