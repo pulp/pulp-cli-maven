@@ -11,6 +11,7 @@ from pulpcore.cli.maven.distribution import distribution
 translation = get_translation(__name__)
 _ = translation.gettext
 
+__version__ = "0.1.0"
 
 @pulp_group(name="maven")
 def maven_group() -> None:
