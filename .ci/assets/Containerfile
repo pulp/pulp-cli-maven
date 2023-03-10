@@ -1,0 +1,8 @@
+ARG FROM_TAG="latest"
+FROM ghcr.io/pulp/pulp-ci-centos:${FROM_TAG}
+
+ARG PULP_MAVEN_VERSION=""
+
+RUN pip3 install --upgrade \
+  pulp_maven${PULP_OSTREE_VERSION} \
+  requests
