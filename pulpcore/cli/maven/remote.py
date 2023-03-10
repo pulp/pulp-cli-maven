@@ -1,6 +1,6 @@
 import click
 from pulp_glue.common.i18n import get_translation
-from pulpcore.cli.maven.context import PulpMavenRemoteContext
+from pulp_glue.maven.context import PulpMavenRemoteContext
 
 from pulpcore.cli.common.generic import (
     PulpCLIContext,

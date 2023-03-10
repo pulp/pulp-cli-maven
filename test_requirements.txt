@@ -1,4 +1,6 @@
--e .
+.
+./pulp-glue-maven
+
 black~=22.3
 flake8
 isort

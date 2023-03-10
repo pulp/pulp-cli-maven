@@ -1,13 +1,5 @@
-from typing import Any, Dict, List, Optional
-
 import click
-import schema as s
-from pulp_glue.common.context import (
-    EntityFieldDefinition,
-    PluginRequirement,
-    PulpRemoteContext,
-    PulpRepositoryContext,
-)
+
 from pulp_glue.common.i18n import get_translation
 
 from pulpcore.cli.common.generic import (
@@ -39,7 +31,7 @@ from pulpcore.cli.common.generic import (
 )
 from pulpcore.cli.core.generic import task_command
 
-from pulpcore.cli.maven.context import (
+from pulp_glue.maven.context import (
     PulpMavenArtifactContentContext,
     PulpMavenRemoteContext,
     PulpMavenRepositoryContext,

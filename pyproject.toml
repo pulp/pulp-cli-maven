@@ -1,10 +1,10 @@
 [tool.towncrier]
-package = "pulpcore.cli.ostree"
+package = "pulpcore.cli.maven"
 filename = "CHANGES.md"
 directory = "CHANGES/"
 title_format = "## {version} ({project_date})"
 template = "CHANGES/.TEMPLATE.md"
-issue_format = "[#{issue}](https://github.com/pulp/pulp-cli-ostree/issues/{issue})"
+issue_format = "[#{issue}](https://github.com/pulp/pulp-cli-maven/issues/{issue})"
 start_string = "[//]: # (towncrier release notes start)\n"
 
 [[tool.towncrier.type]]
