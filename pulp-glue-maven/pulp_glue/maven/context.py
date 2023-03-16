@@ -1,7 +1,7 @@
 from gettext import gettext as _
 
-from pulp_glue.common.context import EntityDefinition  # noqa: F401
 from pulp_glue.common.context import (
+    EntityDefinition,
     PulpContentContext,
     PulpDistributionContext,
     PulpRemoteContext,
@@ -16,8 +16,6 @@ class PulpMavenArtifactContentContext(PulpContentContext):
     ENTITIES = _("artifact content")
     HREF = "maven_maven_artifact_href"
     ID_PREFIX = "content_maven_artifact"
-    LIST_ID = "content_maven_artifact_list"
-    READ_ID = "content_maven_artifact_read"
 
 
 class PulpMavenDistributionContext(PulpDistributionContext):
@@ -25,11 +23,6 @@ class PulpMavenDistributionContext(PulpDistributionContext):
     ENTITIES = _("maven distributions")
     HREF = "maven_maven_distribution_href"
     ID_PREFIX = "distributions_maven_maven"
-    LIST_ID = "distributions_maven_maven_list"
-    READ_ID = "distributions_maven_maven_read"
-    CREATE_ID = "distributions_maven_maven_create"
-    UPDATE_ID = "distributions_maven_maven_partial_update"
-    DELETE_ID = "distributions_maven_maven_delete"
 
     def preprocess_body(self, body: EntityDefinition) -> EntityDefinition:
         body = super().preprocess_body(body)
@@ -45,30 +38,16 @@ class PulpMavenRemoteContext(PulpRemoteContext):
     ENTITIES = _("maven remotes")
     HREF = "maven_maven_remote_href"
     ID_PREFIX = "remotes_maven_maven"
-    LIST_ID = "remotes_maven_maven_list"
-    CREATE_ID = "remotes_maven_maven_create"
-    READ_ID = "remotes_maven_maven_read"
-    UPDATE_ID = "remotes_maven_maven_partial_update"
-    DELETE_ID = "remotes_maven_maven_delete"
 
 
 class PulpMavenRepositoryVersionContext(PulpRepositoryVersionContext):
     HREF = "maven_maven_repository_version_href"
     ID_PREFIX = "repositories_maven_maven_versions"
-    LIST_ID = "repositories_maven_maven_versions_list"
-    READ_ID = "repositories_maven_maven_versions_read"
-    DELETE_ID = "repositories_maven_maven_versions_delete"
-    REPAIR_ID = "repositories_maven_maven_versions_repair"
 
 
 class PulpMavenRepositoryContext(PulpRepositoryContext):
     HREF = "maven_maven_repository_href"
     ID_PREFIX = "repositories_maven_maven"
-    LIST_ID = "repositories_maven_maven_list"
-    READ_ID = "repositories_maven_maven_read"
-    CREATE_ID = "repositories_maven_maven_create"
-    UPDATE_ID = "repositories_maven_maven_partial_update"
-    DELETE_ID = "repositories_maven_maven_delete"
     VERSION_CONTEXT = PulpMavenRepositoryVersionContext
 
 

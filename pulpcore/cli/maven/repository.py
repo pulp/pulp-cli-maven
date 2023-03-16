@@ -1,41 +1,27 @@
 import click
-
 from pulp_glue.common.i18n import get_translation
-
+from pulp_glue.maven.context import PulpMavenArtifactContentContext, PulpMavenRepositoryContext
 from pulpcore.cli.common.generic import (
-    GroupOption,
     PulpCLIContext,
     create_command,
-    create_content_json_callback,
     destroy_command,
     href_option,
-    json_callback,
     label_command,
     label_select_option,
     list_command,
-    load_file_wrapper,
     name_option,
     pass_pulp_context,
-    pass_repository_context,
     pulp_group,
     pulp_labels_option,
-    pulp_option,
     repository_content_command,
     repository_href_option,
     repository_lookup_option,
-    resource_option,
     retained_versions_option,
     show_command,
     update_command,
     version_command,
 )
 from pulpcore.cli.core.generic import task_command
-
-from pulp_glue.maven.context import (
-    PulpMavenArtifactContentContext,
-    PulpMavenRemoteContext,
-    PulpMavenRepositoryContext,
-)
 
 translation = get_translation(__name__)
 _ = translation.gettext
