@@ -1,4 +1,7 @@
+from typing import Any, Dict
+
 import click
+from pulp_glue.common.context import EntityFieldDefinition, PulpRemoteContext
 from pulp_glue.common.i18n import get_translation
 from pulp_glue.maven.context import PulpMavenArtifactContentContext, PulpMavenRepositoryContext
 from pulpcore.cli.common.generic import (
@@ -11,11 +14,13 @@ from pulpcore.cli.common.generic import (
     list_command,
     name_option,
     pass_pulp_context,
+    pass_repository_context,
     pulp_group,
     pulp_labels_option,
     repository_content_command,
     repository_href_option,
     repository_lookup_option,
+    resource_option,
     retained_versions_option,
     show_command,
     update_command,
@@ -25,6 +30,18 @@ from pulpcore.cli.core.generic import task_command
 
 translation = get_translation(__name__)
 _ = translation.gettext
+
+remote_option = resource_option(
+    "--remote",
+    default_plugin="maven",
+    default_type="maven",
+    context_table={"maven:maven": PulpRemoteContext},
+    href_pattern=PulpRemoteContext.HREF_PATTERN,
+    help=_(
+        "Remote used for adding cached content in the form '[[<plugin>:]<resource_type>:]<name>' "
+        "or by href."
+    ),
+)
 
 
 @pulp_group()
@@ -48,6 +65,7 @@ lookup_options = [href_option, name_option, repository_lookup_option]
 nested_lookup_options = [repository_href_option, repository_lookup_option]
 update_options = [
     click.option("--description"),
+    remote_option,
     retained_versions_option,
     pulp_labels_option,
 ]
@@ -66,3 +84,33 @@ repository.add_command(
         contexts={"maven": PulpMavenArtifactContentContext},
     )
 )
+
+
+@repository.command()
+@name_option
+@href_option
+@repository_lookup_option
+@remote_option
+@pass_repository_context
+def add_cached_content(
+    repository_ctx: PulpMavenRepositoryContext,
+    remote: EntityFieldDefinition,
+) -> None:
+    """
+    Add cached Maven content to the repository. The remote is used to identify which
+    content created by pulpcore-content to add to the repository. If a remote is not
+    specified, the remote associated with the repository will be used.
+    """
+    body: Dict[str, Any] = {}
+    repository = repository_ctx.entity
+
+    if remote:
+        body["remote"] = remote
+    elif repository["remote"] is None:
+        raise click.ClickException(
+            _(
+                "Repository '{name}' does not have a default remote. "
+                "Please specify with '--remote'."
+            ).format(name=repository["name"])
+        )
+    repository_ctx.add_cached_content(body=body)
