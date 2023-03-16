@@ -1,13 +1,23 @@
+PLUGINS=$(notdir $(wildcard pulpcore/cli/*))
+
+info:
+	@echo Pulp CLI
+	@echo plugins: $(PLUGINS)
+
 black:
 	isort .
+	cd pulp-glue-maven; isort .
 	black .
 
 lint:
 	find . -name '*.sh' -print0 | xargs -0 shellcheck -x
-	black --diff --check .
 	isort -c --diff .
+	cd pulp-glue-maven; isort -c --diff .
+	black --diff --check .
 	flake8
+	.ci/scripts/check_click_for_mypy.py
 	mypy
+	cd pulp-glue-maven; mypy
 	@echo "🙊 Code 🙈 LGTM 🙉 !"
 
 tests/cli.toml:
@@ -17,4 +27,7 @@ tests/cli.toml:
 test: | tests/cli.toml
 	pytest -v tests
 
-.PHONY: black lint
+site:
+	mkdocs build
+
+.PHONY: info black lint test

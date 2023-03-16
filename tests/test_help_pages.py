@@ -3,7 +3,6 @@
 import click
 import pytest
 from click.testing import CliRunner
-
 from pulp_cli import load_plugins
 
 main = load_plugins()
