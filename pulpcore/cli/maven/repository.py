@@ -1,7 +1,7 @@
-from typing import Any, Dict
+import typing as t
 
 import click
-from pulp_glue.common.context import EntityFieldDefinition, PulpRemoteContext
+from pulp_glue.common.context import EntityFieldDefinition, PulpRemoteContext, PulpRepositoryContext
 from pulp_glue.common.i18n import get_translation
 from pulp_glue.maven.context import PulpMavenArtifactContentContext, PulpMavenRepositoryContext
 from pulpcore.cli.common.generic import (
@@ -93,7 +93,7 @@ repository.add_command(
 @remote_option
 @pass_repository_context
 def add_cached_content(
-    repository_ctx: PulpMavenRepositoryContext,
+    repository_ctx: PulpRepositoryContext,
     remote: EntityFieldDefinition,
 ) -> None:
     """
@@ -101,7 +101,9 @@ def add_cached_content(
     content created by pulpcore-content to add to the repository. If a remote is not
     specified, the remote associated with the repository will be used.
     """
-    body: Dict[str, Any] = {}
+    assert isinstance(repository_ctx, PulpMavenRepositoryContext)
+
+    body: t.Dict[str, t.Any] = {}
     repository = repository_ctx.entity
 
     if remote:
