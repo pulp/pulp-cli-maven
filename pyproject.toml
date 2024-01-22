@@ -1,3 +1,27 @@
+[tool.pulp_cli_template]
+app_label = "maven"
+glue = true
+docs = false
+translations = false
+test_matrix = """
+- python: "3.11"
+  image_tag: "nightly"
+  pulp_api_root: "/relocated/djnd/"
+- python: "3.6"
+  image_tag: "3.27"
+- python: "3.7"
+  image_tag: "3.23"
+  lower_bounds: true
+- python: "3.8"
+  image_tag: "3.22"
+- python: "3.9"
+  image_tag: "3.21"
+  pulp_api_root: "/relocated/djnd/"
+- python: "3.10"
+  image_tag: "3.18"
+  lower_bounds: true
+"""
+
 [tool.towncrier]
 package = "pulpcore.cli.maven"
 filename = "CHANGES.md"

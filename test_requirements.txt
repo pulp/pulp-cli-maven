@@ -1,6 +1,3 @@
-.
-./pulp-glue-maven
-
 # Test requirements
 pygments
 pytest
