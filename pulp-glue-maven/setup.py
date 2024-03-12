@@ -29,8 +29,8 @@ setup(
     version="0.3.0.dev",
     packages=plugin_packages,
     package_data={"": ["py.typed"]},
-    python_requires=">=3.6",
-    install_requires=["pulp-glue>=0.18.0"],
+    python_requires=">=3.8",
+    install_requires=["pulp-glue>=0.24.0"],
     license="GPLv2+",
     classifiers=[
         "Development Status :: 4 - Beta",
