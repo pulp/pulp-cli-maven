@@ -10,6 +10,29 @@
 
 [//]: # (towncrier release notes start)
 
+## 0.3.0 (2024-05-23) {: #0.3.0 }
+
+
+
+#### Bugfixes {: #0.3.0-bugfix }
+
+- Add version constrains to the compatibility with `pulp-cli`.
+
+
+#### Deprecations and Removals {: #0.3.0-removal }
+
+- Bumped minimum pulp-cli version to 0.24.0.
+- Dropped support for python <3.8.
+
+
+### Pulp-maven GLUE {: #0.3.0-pulp-maven-glue }
+
+
+No significant changes.
+
+
+---
+
 ## 0.2.0 (2023-03-17) {: #0.2.0 }
 
 
