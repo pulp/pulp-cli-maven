@@ -1,0 +1,1 @@
+Fixed compatibility with pulp-cli 0.25 and declared it properly for pulp-glue-maven.
