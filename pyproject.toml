@@ -121,7 +121,7 @@ skip = ["pulp-glue-maven"]
 markers = [
   "script: tests provided as shell scripts",
   "help_page: tests that render help pages",
-  "pulp_ostree: pulp_ostree tests",
+  "pulp_maven: pulp_maven tests",
 ]
 
 [tool.mypy]
