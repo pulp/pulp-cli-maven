@@ -11,7 +11,7 @@ from pulpcore.cli.maven.repository import repository
 translation = get_translation(__name__)
 _ = translation.gettext
 
-__version__ = "0.3.1"
+__version__ = "0.3.2.dev"
 
 
 @pulp_group(name="maven")
