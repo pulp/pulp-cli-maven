@@ -12,7 +12,9 @@ build:
 	cd pulp-glue-maven; pyproject-build -n
 	pyproject-build -n
 
-black:
+black: format
+
+format:
 	isort .
 	cd pulp-glue-maven; isort .
 	black .
@@ -33,5 +35,14 @@ tests/cli.toml:
 	@echo "In order to configure the tests to talk to your test server, you might need to edit $@ ."
 
 test: | tests/cli.toml
-	pytest -v tests
+	python3 -m pytest -v tests pulp-glue-maven/tests
+
+livetest: | tests/cli.toml
+	python3 -m pytest -v tests pulp-glue-maven/tests -m live
+
+unittest:
+	python3 -m pytest -v tests pulp-glue-maven/tests -m "not live"
+
+unittest_glue:
+	python3 -m pytest -v pulp-glue-maven/tests -m "not live"
 .PHONY: build info black lint test
