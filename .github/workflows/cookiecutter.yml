@@ -45,7 +45,7 @@ jobs:
           path: "pulp-cli-maven"
       - name: "Mark PR automerge"
         run: |
-          gh pr merge --rebase --auto "${{ steps.create_pr_main.outputs.pull-request-number }}"
+          gh pr merge --rebase --auto "${{ steps.create_pr.outputs.pull-request-number }}"
         if: "steps.create_pr.outputs.pull-request-number"
         env:
           GH_TOKEN: "${{ secrets.RELEASE_TOKEN }}"
