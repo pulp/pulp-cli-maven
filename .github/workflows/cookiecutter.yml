@@ -33,6 +33,11 @@ jobs:
       - name: "Apply cookiecutter templates"
         run: |
           ../pulp-cli/cookiecutter/apply_templates.py
+          if [ "$(git status --porcelain)" ]
+          then
+            git add .
+            git commit -m "Update cookiecutter"
+          fi
       - name: "Create Pull Request"
         uses: "peter-evans/create-pull-request@v7"
         id: "create_pr"
@@ -45,7 +50,7 @@ jobs:
           path: "pulp-cli-maven"
       - name: "Mark PR automerge"
         run: |
-          gh pr merge --rebase --auto "${{ steps.create_pr_main.outputs.pull-request-number }}"
+          gh pr merge --rebase --auto "${{ steps.create_pr.outputs.pull-request-number }}"
         if: "steps.create_pr.outputs.pull-request-number"
         env:
           GH_TOKEN: "${{ secrets.RELEASE_TOKEN }}"

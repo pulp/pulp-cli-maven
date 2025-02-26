@@ -23,7 +23,7 @@ classifiers=[
   "Typing :: Typed",
 ]
 dependencies = [
-  "pulp-cli>=0.24.0,<0.30.0",
+  "pulp-cli>=0.24.0,<0.32",
   "pulp-glue-maven==0.4.0.dev",
 ]
 
@@ -55,6 +55,7 @@ docs = false
 translations = false
 main_package = "maven"
 binary_dependencies = ""
+unittests = false
 
 [tool.towncrier]
 # This section is managed by the cookiecutter templates.
@@ -104,7 +105,7 @@ showcontent = true
 # This section is managed by the cookiecutter templates.
 directory = "misc"
 name = "Misc"
-showcontent = false
+showcontent = true
 
 
 [tool.black]
@@ -142,7 +143,6 @@ module = [
   "schema.*",
 ]
 ignore_missing_imports = true
-
 
 [tool.bumpversion]
 # This section is managed by the cookiecutter templates.
