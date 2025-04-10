@@ -24,7 +24,7 @@ classifiers=[
 ]
 dependencies = [
   "pulp-cli>=0.24.0,<0.32",
-  "pulp-glue-maven==0.4.0.dev",
+  "pulp-glue-maven==0.4.0",
 ]
 
 [project.urls]
