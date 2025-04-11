@@ -10,6 +10,23 @@
 
 [//]: # (towncrier release notes start)
 
+## 0.4.0 (2025-04-10) {: #0.4.0 }
+
+
+
+#### Bugfixes {: #0.4.0-bugfix }
+
+- Fixed compatibility with pulp-cli 0.25 and declared it properly for pulp-glue-maven.
+
+
+### Pulp-maven GLUE {: #0.4.0-pulp-maven-glue }
+
+
+No significant changes.
+
+
+---
+
 ## 0.3.1 (2024-05-23) {: #0.3.1 }
 
 
