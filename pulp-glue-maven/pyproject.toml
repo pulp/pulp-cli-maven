@@ -23,7 +23,7 @@ classifiers = [
   "Typing :: Typed",
 ]
 dependencies = [
-  "pulp-glue>=0.24.0,<0.32"
+  "pulp-glue>=0.24.0,<0.37"
 ]
 
 [project.urls]
