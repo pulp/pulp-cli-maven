@@ -1,9 +1,6 @@
 import typing as t
 
 import click
-from pulp_glue.common.context import EntityFieldDefinition, PulpRemoteContext, PulpRepositoryContext
-from pulp_glue.common.i18n import get_translation
-from pulp_glue.maven.context import PulpMavenArtifactContentContext, PulpMavenRepositoryContext
 from pulpcore.cli.common.generic import (
     PulpCLIContext,
     create_command,
@@ -27,6 +24,10 @@ from pulpcore.cli.common.generic import (
     version_command,
 )
 from pulpcore.cli.core.generic import task_command
+
+from pulp_glue.common.context import EntityFieldDefinition, PulpRemoteContext, PulpRepositoryContext
+from pulp_glue.common.i18n import get_translation
+from pulp_glue.maven.context import PulpMavenArtifactContentContext, PulpMavenRepositoryContext
 
 translation = get_translation(__name__)
 _ = translation.gettext

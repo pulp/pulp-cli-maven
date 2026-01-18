@@ -1,10 +1,4 @@
 import click
-from pulp_glue.common.i18n import get_translation
-from pulp_glue.maven.context import (
-    PulpMavenDistributionContext,
-    PulpMavenRemoteContext,
-    PulpMavenRepositoryContext,
-)
 from pulpcore.cli.common.generic import (
     PulpCLIContext,
     common_distribution_create_options,
@@ -22,6 +16,13 @@ from pulpcore.cli.common.generic import (
     resource_option,
     show_command,
     update_command,
+)
+
+from pulp_glue.common.i18n import get_translation
+from pulp_glue.maven.context import (
+    PulpMavenDistributionContext,
+    PulpMavenRemoteContext,
+    PulpMavenRepositoryContext,
 )
 
 translation = get_translation(__name__)
