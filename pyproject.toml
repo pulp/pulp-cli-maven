@@ -23,7 +23,7 @@ classifiers=[
   "Typing :: Typed",
 ]
 dependencies = [
-  "pulp-cli<0.38,>=0.24.0",
+  "pulp-cli<0.39,>=0.24.0",
   "pulp-glue-maven==0.5.0.dev",
 ]
 
