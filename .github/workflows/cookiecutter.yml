@@ -13,28 +13,30 @@ jobs:
   update-ci:
     runs-on: "ubuntu-latest"
     steps:
-      - uses: "actions/checkout@v5"
+      - uses: "actions/checkout@v6"
         with:
           repository: "pulp/pulp-cli"
           path: "pulp-cli"
-      - uses: "actions/checkout@v5"
+      - uses: "actions/checkout@v6"
         with:
           token: "${{ secrets.RELEASE_TOKEN }}"
           path: "pulp-cli-maven"
-      - name: "Set up Python"
-        uses: "actions/setup-python@v6"
-        with:
-          python-version: "3.x"
       - name: "Setup git"
         run: |
           git config user.name pulpbot
           git config user.email pulp-infra@redhat.com
-      - name: "Install python dependencies"
-        run: |
-          pip install cookiecutter tomlkit
+      - name: "Set up Python"
+        uses: "actions/setup-python@v6"
+        with:
+          python-version: "3.14"
+          allow-prereleases: true
+      - name: "Install uv"
+        uses: "astral-sh/setup-uv@v7"
+        with:
+          enable-cache: true
       - name: "Apply cookiecutter templates"
         run: |
-          ../pulp-cli/cookiecutter/apply_templates.py
+          uv run ../pulp-cli/cookiecutter/apply_templates.py
           if [ "$(git status --porcelain)" ]
           then
             git add .
@@ -60,28 +62,30 @@ jobs:
   update-dependencies:
     runs-on: "ubuntu-latest"
     steps:
-      - uses: "actions/checkout@v5"
+      - uses: "actions/checkout@v6"
         with:
           repository: "pulp/pulp-cli"
           path: "pulp-cli"
-      - uses: "actions/checkout@v5"
+      - uses: "actions/checkout@v6"
         with:
           token: "${{ secrets.RELEASE_TOKEN }}"
           path: "pulp-cli-maven"
-      - name: "Set up Python"
-        uses: "actions/setup-python@v6"
-        with:
-          python-version: "3.x"
       - name: "Setup git"
         run: |
           git config user.name pulpbot
           git config user.email pulp-infra@redhat.com
-      - name: "Install python dependencies"
-        run: |
-          pip install packaging tomlkit
+      - name: "Set up Python"
+        uses: "actions/setup-python@v6"
+        with:
+          python-version: "3.14"
+          allow-prereleases: true
+      - name: "Install uv"
+        uses: "astral-sh/setup-uv@v7"
+        with:
+          enable-cache: true
       - name: "Apply cookiecutter templates"
         run: |
-          ../pulp-cli/cookiecutter/update_pulp_cli.py
+          uv run ../pulp-cli/cookiecutter/update_pulp_cli.py
           if [ "$(git status --porcelain)" ]
           then
             git add .

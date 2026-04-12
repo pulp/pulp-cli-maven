@@ -1,6 +1,6 @@
 
-GLUE_PLUGINS=$(notdir $(wildcard pulp-glue-maven/pulp_glue/*))
-CLI_PLUGINS=$(notdir $(wildcard pulpcore/cli/*))
+GLUE_PLUGINS=$(notdir $(wildcard pulp-glue-maven/src/pulp_glue/*))
+CLI_PLUGINS=$(notdir $(wildcard src/pulpcore/cli/*))
 
 .PHONY: info
 info:
