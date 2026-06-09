@@ -10,6 +10,21 @@
 
 [//]: # (towncrier release notes start)
 
+## 0.5.0 (2026-06-09) {: #0.5.0 }
+
+
+
+No significant changes.
+
+
+### Pulp-maven GLUE {: #0.5.0-pulp-maven-glue }
+
+
+No significant changes.
+
+
+---
+
 ## 0.4.0 (2025-04-10) {: #0.4.0 }
 
 
