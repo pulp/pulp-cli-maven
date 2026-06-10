@@ -10,6 +10,24 @@
 
 [//]: # (towncrier release notes start)
 
+## 0.5.1 (2026-06-10) {: #0.5.1 }
+
+
+
+#### Bugfixes {: #0.5.1-bugfix }
+
+- Added missing `--content-guard` option to Maven distribution commands.
+  [#162](https://github.com/pulp/pulp-cli-maven/issues/162)
+
+
+### Pulp-maven GLUE {: #0.5.1-pulp-maven-glue }
+
+
+No significant changes.
+
+
+---
+
 ## 0.5.0 (2026-06-09) {: #0.5.0 }
 
 
