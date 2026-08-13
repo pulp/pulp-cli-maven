@@ -1,5 +1,5 @@
 from gettext import gettext as _
-from typing import Any, Optional
+from typing import Any
 
 from pulp_glue.common.context import (
     EntityDefinition,
@@ -68,7 +68,7 @@ class PulpMavenRepositoryContext(PulpRepositoryContext):
     NEEDS_PLUGINS = [PluginRequirement("maven", specifier=">=0.4.0")]
 
     def add_cached_content(
-        self, href: Optional[str] = None, body: Optional[EntityDefinition] = None
+        self, href: str | None = None, body: EntityDefinition | None = None
     ) -> Any:
         self.needs_capability("add-cached-content")
         return self.call(
