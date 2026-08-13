@@ -1,7 +1,5 @@
-import typing as t
-
 import click
-from pulpcore.cli.common.generic import (
+from pulp_cli.generic import (
     PulpCLIContext,
     create_command,
     destroy_command,
@@ -25,7 +23,12 @@ from pulpcore.cli.common.generic import (
 )
 from pulpcore.cli.core.generic import task_command
 
-from pulp_glue.common.context import EntityFieldDefinition, PulpRemoteContext, PulpRepositoryContext
+from pulp_glue.common.context import (
+    EntityDefinition,
+    EntityFieldDefinition,
+    PulpRemoteContext,
+    PulpRepositoryContext,
+)
 from pulp_glue.common.i18n import get_translation
 from pulp_glue.maven.context import PulpMavenArtifactContentContext, PulpMavenRepositoryContext
 
@@ -104,7 +107,7 @@ def add_cached_content(
     """
     assert isinstance(repository_ctx, PulpMavenRepositoryContext)
 
-    body: t.Dict[str, t.Any] = {}
+    body: EntityDefinition = {}
     repository = repository_ctx.entity
 
     if remote:
