@@ -10,6 +10,33 @@
 
 [//]: # (towncrier release notes start)
 
+## 0.6.0 (2026-08-13) {: #0.6.0 }
+
+
+
+#### Bugfixes {: #0.6.0-bugfix }
+
+- Added missing `--content-guard` option to Maven distribution commands.
+  [#162](https://github.com/pulp/pulp-cli-maven/issues/162)
+
+
+#### Deprecations and Removals {: #0.6.0-removal }
+
+- Raised the minimum required pulp-cli/pulp-glue version to 0.32.4.
+  [#158](https://github.com/pulp/pulp-cli-maven/issues/158)
+
+
+### Pulp-maven GLUE {: #0.6.0-pulp-maven-glue }
+
+
+#### Deprecations and Removals {: #0.6.0-pulp-maven-glue-removal }
+
+- Raised the minimum required pulp-glue version to 0.32.4.
+  [#158](https://github.com/pulp/pulp-cli-maven/issues/158)
+
+
+---
+
 ## 0.5.1 (2026-06-10) {: #0.5.1 }
 
 
