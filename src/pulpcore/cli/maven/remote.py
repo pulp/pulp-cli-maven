@@ -11,6 +11,7 @@ from pulp_cli.generic import (
     name_option,
     pass_pulp_context,
     pulp_group,
+    pulp_option,
     remote_filter_options,
     remote_lookup_option,
     show_command,
@@ -44,9 +45,19 @@ def remote(ctx: click.Context, pulp_ctx: PulpCLIContext, remote_type: str) -> No
 lookup_options = [href_option, name_option, remote_lookup_option]
 nested_lookup_options = [remote_lookup_option]
 
+maven_remote_options = [
+    pulp_option(
+        "--policy",
+        type=click.Choice(["immediate", "on_demand", "streamed"], case_sensitive=False),
+        allowed_with_contexts=(PulpMavenRemoteContext,),
+    ),
+]
+
 remote.add_command(list_command(decorators=remote_filter_options))
 remote.add_command(show_command(decorators=lookup_options))
-remote.add_command(create_command(decorators=common_remote_create_options))
-remote.add_command(update_command(decorators=lookup_options + common_remote_update_options))
+remote.add_command(create_command(decorators=common_remote_create_options + maven_remote_options))
+remote.add_command(
+    update_command(decorators=lookup_options + common_remote_update_options + maven_remote_options)
+)
 remote.add_command(destroy_command(decorators=lookup_options))
 remote.add_command(label_command(decorators=nested_lookup_options))
