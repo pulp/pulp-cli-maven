@@ -1,4 +1,6 @@
 
+# This file is managed by the cookiecutter templates.
+# Do not edit manually
 GLUE_PLUGINS=$(notdir $(wildcard pulp-glue-maven/src/pulp_glue/*))
 CLI_PLUGINS=$(notdir $(wildcard src/pulpcore/cli/*))
 
@@ -36,6 +38,7 @@ _lint:
 	ruff format --check --diff
 	ruff check --output-format concise
 	.ci/scripts/check_cli_dependencies.py
+	.ci/scripts/check_changelog_snippets.py
 	.ci/scripts/check_click_for_mypy.py
 	mypy
 	cd pulp-glue-maven; mypy
